@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830320432672",
+    "project_id": "style-hub-fashion-store",
+    "storage_bucket": "style-hub-fashion-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830320432672:android:f7a82afcff923cff974e45",
+        "android_client_info": {
+          "package_name": "com.example.stylehub_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADCvHT0FzaEpuI3PhZl5z2m_adME7A17Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'views/auth/create_account_view.dart';
+
+void main() {
+  runApp(const StyleHubApp());
+}
+
+class StyleHubApp extends StatelessWidget {
+  const StyleHubApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'StyleHub',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF9E8E76)),
+        useMaterial3: true,
+      ),
+      home: const CreateAccountView(),
+    );
+  }
+}
