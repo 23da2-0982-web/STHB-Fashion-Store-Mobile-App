@@ -21,8 +21,8 @@ class HomeViewModel extends ChangeNotifier {
     Category(
       id: 'c3',
       title: 'Kids',
-      imageUrl: 'assets/images/denim.png',
-    ), // Mock
+      imageUrl: kKidsCategoryPhoto,
+    ), // Using colorful kids store image
   ];
 
   // Master Product List

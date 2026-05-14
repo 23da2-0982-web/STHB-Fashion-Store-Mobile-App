@@ -185,7 +185,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.white.withOpacity(0.9),
+                    backgroundColor: Colors.white.withValues(alpha: 0.9),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     side: BorderSide(color: Colors.grey[300]!),
                     shape: RoundedRectangleBorder(
@@ -250,7 +250,7 @@ class _LoginViewState extends State<LoginView> {
       style: GoogleFonts.inter(fontSize: 15),
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.white.withOpacity(0.92),
+        fillColor: Colors.white.withValues(alpha: 0.92),
         hintText: hintText,
         hintStyle: GoogleFonts.inter(color: Colors.grey[500], fontSize: 15),
         prefixIcon: Icon(icon, size: 20, color: Colors.grey[700]),

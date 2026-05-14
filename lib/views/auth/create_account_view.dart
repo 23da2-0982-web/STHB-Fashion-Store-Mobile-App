@@ -210,7 +210,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     const Divider(color: Color(0x66FFFFFF), thickness: 1),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.12),
+                        color: Colors.white.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -428,7 +428,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
           style: GoogleFonts.inter(fontSize: 14),
           decoration: InputDecoration(
             filled: true,
-            fillColor: Colors.white.withOpacity(0.92),
+            fillColor: Colors.white.withValues(alpha: 0.92),
             hintText: hintText,
             hintStyle: GoogleFonts.inter(color: Colors.grey[500], fontSize: 14),
             enabledBorder: OutlineInputBorder(
