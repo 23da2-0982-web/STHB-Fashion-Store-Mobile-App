@@ -137,6 +137,85 @@ class _HomeContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
+              // Location Bar
+              ListenableBuilder(
+                listenable: vm,
+                builder: (context, _) {
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.grey.shade200),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on_outlined, color: Colors.grey, size: 20),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Send to', style: GoogleFonts.inter(color: Colors.grey, fontSize: 10)),
+                              Text(vm.currentLocation, style: GoogleFonts.inter(color: Colors.black, fontSize: 13, fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                final textController = TextEditingController(text: vm.currentLocation);
+                                return AlertDialog(
+                                  title: Text('Edit Location', style: GoogleFonts.playfairDisplay(fontWeight: FontWeight.bold)),
+                                  content: TextField(
+                                    controller: textController,
+                                    decoration: InputDecoration(
+                                      hintText: 'Enter your location',
+                                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('Cancel', style: GoogleFonts.inter(color: Colors.grey)),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        if (textController.text.trim().isNotEmpty) {
+                                          vm.updateLocation(textController.text.trim());
+                                        }
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color(0xFF8B7355),
+                                        foregroundColor: Colors.white,
+                                      ),
+                                      child: Text('Save', style: GoogleFonts.inter(fontWeight: FontWeight.bold)),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF8B7355),
+                            foregroundColor: Colors.white,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                            minimumSize: Size.zero,
+                          ),
+                          child: Text('Change', style: GoogleFonts.inter(fontSize: 11, fontWeight: FontWeight.w600)),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 24),
+
               // Search Bar
               Container(
                 height: 48,
@@ -233,82 +312,116 @@ class _HomeContent extends StatelessWidget {
               // Hero Banner
               Container(
                 width: double.infinity,
-                height: 200,
+                height: 160,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/hero_banner.png'),
-                    fit: BoxFit.cover,
-                  ),
+                  color: const Color(0xFF1A1C29),
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black.withValues(alpha: 0.7),
-                        Colors.transparent,
-                      ],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(16),
+                          bottomRight: Radius.circular(16),
+                        ),
+                        child: Image.asset(
+                          'assets/images/hero_banner.png',
+                          width: 140,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'SUMMER COLLECTION',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFFE8D3B4),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'New\nArrivals —\nUp to 40%\nOff',
-                        style: GoogleFonts.playfairDisplay(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          height: 1.2,
-                        ),
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const EnsembleView(),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't miss out —",
+                            style: GoogleFonts.inter(
+                              color: Colors.white70,
+                              fontSize: 12,
                             ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.black,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 10,
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
+                          const SizedBox(height: 8),
+                          SizedBox(
+                            width: 180,
+                            child: Text(
+                              'Save up to 50% on your\nfavorite products.',
+                              style: GoogleFonts.inter(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                height: 1.3,
+                              ),
+                            ),
                           ),
-                          minimumSize: Size.zero,
-                        ),
-                        child: Text(
-                          'SHOP NOW',
-                          style: GoogleFonts.inter(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5,
+                          const Spacer(),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const EnsembleView(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.black,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 10,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              minimumSize: Size.zero,
+                            ),
+                            child: Text(
+                              'Shop Now',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+
+              // Popular Brand
+              Text(
+                'Popular Brand',
+                style: GoogleFonts.inter(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 16),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    _buildBrandItem(context, 'H', 'H&M'),
+                    const SizedBox(width: 20),
+                    _buildBrandItem(context, 'Z', 'Zara'),
+                    const SizedBox(width: 20),
+                    _buildBrandItem(context, 'L', 'Lacoste'),
+                    const SizedBox(width: 20),
+                    _buildBrandItem(context, 'R', 'Ralph L'),
+                    const SizedBox(width: 20),
+                    _buildBrandItem(context, 'P', 'Puma'),
+                  ],
                 ),
               ),
               const SizedBox(height: 32),
@@ -323,12 +436,17 @@ class _HomeContent extends StatelessWidget {
                   itemCount: kMySpacePhotos.length,
                   separatorBuilder: (context, index) => const SizedBox(width: 16),
                   itemBuilder: (context, index) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.asset(
-                        kMySpacePhotos[index],
-                        width: 110,
-                        fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CatalogView()));
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          kMySpacePhotos[index],
+                          width: 110,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     );
                   },
@@ -346,12 +464,17 @@ class _HomeContent extends StatelessWidget {
                   itemCount: kWomenCollectionPhotos.length,
                   separatorBuilder: (context, index) => const SizedBox(width: 16),
                   itemBuilder: (context, index) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.asset(
-                        kWomenCollectionPhotos[index],
-                        width: 110,
-                        fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const WomenCollectionView()));
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          kWomenCollectionPhotos[index],
+                          width: 110,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     );
                   },
@@ -369,12 +492,17 @@ class _HomeContent extends StatelessWidget {
                   itemCount: kKidsCollectionPhotos.length,
                   separatorBuilder: (context, index) => const SizedBox(width: 16),
                   itemBuilder: (context, index) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.asset(
-                        kKidsCollectionPhotos[index],
-                        width: 110,
-                        fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const KidsCollectionView()));
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          kKidsCollectionPhotos[index],
+                          width: 110,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     );
                   },
@@ -468,6 +596,41 @@ class _HomeContent extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+
+  Widget _buildBrandItem(BuildContext context, String initial, String name) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const CatalogView()),
+        );
+      },
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 28,
+            backgroundColor: Colors.grey[100],
+            child: Text(
+              initial,
+              style: GoogleFonts.inter(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            name,
+            style: GoogleFonts.inter(
+              fontSize: 11,
+              color: Colors.grey[600],
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

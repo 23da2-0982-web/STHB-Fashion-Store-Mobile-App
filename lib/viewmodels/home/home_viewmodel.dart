@@ -10,6 +10,9 @@ class HomeViewModel extends ChangeNotifier {
   String _selectedCategoryId = 'c1'; // Default selected is Women
   String get selectedCategoryId => _selectedCategoryId;
 
+  String _currentLocation = 'Colombo, Sri Lanka';
+  String get currentLocation => _currentLocation;
+
   // Mock Categories
   final List<Category> categories = [
     Category(
@@ -246,6 +249,11 @@ class HomeViewModel extends ChangeNotifier {
 
   void selectCategory(String id) {
     _selectedCategoryId = id;
+    notifyListeners();
+  }
+
+  void updateLocation(String newLocation) {
+    _currentLocation = newLocation;
     notifyListeners();
   }
 
