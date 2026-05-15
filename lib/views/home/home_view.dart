@@ -316,6 +316,14 @@ class _HomeContent extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: const Color(0xFF1A1C29),
+                  image: DecorationImage(
+                    image: const AssetImage('assets/images/hero_banner.png'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      const Color(0xFF1A1C29).withValues(alpha: 0.85),
+                      BlendMode.srcATop,
+                    ),
+                  ),
                 ),
                 child: Stack(
                   children: [

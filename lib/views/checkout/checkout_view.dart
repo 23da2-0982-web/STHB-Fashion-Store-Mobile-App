@@ -195,6 +195,15 @@ class _CheckoutViewState extends State<CheckoutView> {
                           fontStyle: FontStyle.italic,
                         ),
                       ),
+                      const SizedBox(height: 16),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          'assets/images/19974d243366d94d4f4e5ae177983403.jpg',
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       const SizedBox(height: 20),
                       _buildPaymentOption(
                         method: PaymentMethod.visa,
