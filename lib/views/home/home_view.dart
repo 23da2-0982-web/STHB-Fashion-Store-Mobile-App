@@ -336,6 +336,52 @@ class _HomeContent extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
+              // Women's Gallery
+              _buildSectionHeader(context, "Women's Gallery", showSeeAll: false),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 120,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: kWomenCollectionPhotos.length,
+                  separatorBuilder: (context, index) => const SizedBox(width: 16),
+                  itemBuilder: (context, index) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        kWomenCollectionPhotos[index],
+                        width: 110,
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 32),
+
+              // Kids' Gallery
+              _buildSectionHeader(context, "Kids' Gallery", showSeeAll: false),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 120,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: kKidsCollectionPhotos.length,
+                  separatorBuilder: (context, index) => const SizedBox(width: 16),
+                  itemBuilder: (context, index) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        kKidsCollectionPhotos[index],
+                        width: 110,
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 32),
+
               // Featured Products
               _buildSectionHeader(context, 'Featured Products'),
               const SizedBox(height: 16),

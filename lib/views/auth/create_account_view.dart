@@ -109,6 +109,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 label: 'Confirm Password',
                 icon: Icons.lock_outline,
                 hintText: '••••••••',
+                isPassword: true,
                 controller: _viewModel.confirmPasswordController,
               ),
               const SizedBox(height: 24),
@@ -122,7 +123,9 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                         value: _viewModel.agreedToTerms,
                         onChanged: (value) =>
                             _viewModel.agreedToTerms = value ?? false,
-                        activeColor: Colors.black,
+                        activeColor: Colors.white,
+                        checkColor: Colors.black,
+                        side: const BorderSide(color: Colors.white70),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(4),
                         ),
@@ -254,6 +257,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                         ),
                       ),
                       style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.white.withValues(alpha: 0.9),
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         side: const BorderSide(color: Color(0xFFEEEEEE)),
                         shape: RoundedRectangleBorder(
@@ -280,6 +284,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                         ),
                       ),
                       style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.white.withValues(alpha: 0.9),
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         side: const BorderSide(color: Color(0xFFEEEEEE)),
                         shape: RoundedRectangleBorder(
@@ -378,7 +383,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
 
               Center(
                 child: Text(
-                  '© 2024 STYLEHUB ATELIER. ALL RIGHTS RESERVED.',
+                  '© 2026 STYLEHUB ATELIER. ALL RIGHTS RESERVED Aakif.',
                   style: GoogleFonts.inter(
                     color: Colors.white70,
                     fontSize: 10,
@@ -409,14 +414,14 @@ class _CreateAccountViewState extends State<CreateAccountView> {
       children: [
         Row(
           children: [
-            Icon(icon, size: 18, color: Colors.grey[600]),
+            Icon(icon, size: 18, color: Colors.white70),
             const SizedBox(width: 8),
             Text(
               label,
               style: GoogleFonts.inter(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: Colors.grey[800],
+                color: Colors.white,
               ),
             ),
           ],

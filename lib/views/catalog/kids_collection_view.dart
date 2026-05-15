@@ -137,7 +137,7 @@ class _KidsCollectionViewState extends State<KidsCollectionView> {
           // Hero Banner
           Container(
             width: double.infinity,
-            height: 140,
+            height: 155,
             margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
