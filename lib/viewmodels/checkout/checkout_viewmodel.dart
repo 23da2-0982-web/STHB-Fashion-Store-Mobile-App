@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-enum PaymentMethod { creditCard, cashOnDelivery }
+enum PaymentMethod { creditCard, visa, cashOnDelivery }
 
 class CheckoutViewModel extends ChangeNotifier {
   int currentStep = 0;
-  PaymentMethod selectedPaymentMethod = PaymentMethod.creditCard;
+  PaymentMethod selectedPaymentMethod = PaymentMethod.visa;
 
   // Form Controllers
   final nameController = TextEditingController();

@@ -537,6 +537,61 @@ class _HomeContent extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
+              // Kids Promotional Banner
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFF6A88), Color(0xFFFF9966), Color(0xFFFFD166)],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'New Season ✨',
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      '57+ Kids\nStyles',
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w900,
+                        height: 1.2,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'UP TO 30% OFF',
+                        style: GoogleFonts.inter(
+                          color: const Color(0xFFFF6A88),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+
               // Kids' Gallery
               _buildSectionHeader(context, "Kids' Gallery", showSeeAll: false),
               const SizedBox(height: 16),

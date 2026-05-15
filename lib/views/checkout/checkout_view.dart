@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../viewmodels/checkout/checkout_viewmodel.dart';
 import 'order_success_view.dart';
 
@@ -196,9 +197,16 @@ class _CheckoutViewState extends State<CheckoutView> {
                       ),
                       const SizedBox(height: 20),
                       _buildPaymentOption(
+                        method: PaymentMethod.visa,
+                        title: 'Visa Classic',
+                        subtitle: '**** **** **** 4242',
+                        icon: FontAwesomeIcons.ccVisa,
+                      ),
+                      const SizedBox(height: 16),
+                      _buildPaymentOption(
                         method: PaymentMethod.creditCard,
-                        title: 'Credit or Debit Card',
-                        subtitle: 'Visa, Mastercard, Amex',
+                        title: 'Other Credit or Debit Card',
+                        subtitle: 'Mastercard, Amex, etc.',
                         icon: Icons.credit_card,
                       ),
                       const SizedBox(height: 16),
