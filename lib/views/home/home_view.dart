@@ -344,8 +344,10 @@ class _HomeContent extends StatelessWidget {
                           Text(
                             "Don't miss out —",
                             style: GoogleFonts.inter(
-                              color: Colors.white70,
+                              color: const Color(0xFFE8D3B4),
                               fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.0,
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -371,8 +373,8 @@ class _HomeContent extends StatelessWidget {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
+                              backgroundColor: const Color(0xFF8B7355),
+                              foregroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 16,
                                 vertical: 10,
@@ -387,6 +389,7 @@ class _HomeContent extends StatelessWidget {
                               style: GoogleFonts.inter(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
                               ),
                             ),
                           ),
@@ -440,12 +443,38 @@ class _HomeContent extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CatalogView()));
                       },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          kMySpacePhotos[index],
-                          width: 110,
-                          fit: BoxFit.cover,
+                      child: SizedBox(
+                        width: 110,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              Image.asset(
+                                kMySpacePhotos[index],
+                                fit: BoxFit.cover,
+                              ),
+                              Positioned(
+                                bottom: 8,
+                                right: 8,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '\$${45 + (index * 12)}',
+                                    style: GoogleFonts.inter(
+                                      color: Colors.black,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -468,12 +497,38 @@ class _HomeContent extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (_) => const WomenCollectionView()));
                       },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          kWomenCollectionPhotos[index],
-                          width: 110,
-                          fit: BoxFit.cover,
+                      child: SizedBox(
+                        width: 110,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              Image.asset(
+                                kWomenCollectionPhotos[index],
+                                fit: BoxFit.cover,
+                              ),
+                              Positioned(
+                                bottom: 8,
+                                right: 8,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '\$${59 + (index * 15)}',
+                                    style: GoogleFonts.inter(
+                                      color: Colors.black,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -496,12 +551,38 @@ class _HomeContent extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (_) => const KidsCollectionView()));
                       },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          kKidsCollectionPhotos[index],
-                          width: 110,
-                          fit: BoxFit.cover,
+                      child: SizedBox(
+                        width: 110,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              Image.asset(
+                                kKidsCollectionPhotos[index],
+                                fit: BoxFit.cover,
+                              ),
+                              Positioned(
+                                bottom: 8,
+                                right: 8,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '\$${30 + (index * 8)}',
+                                    style: GoogleFonts.inter(
+                                      color: Colors.black,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
