@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stylehub_app/utils/app_assets.dart';
 import '../auth/login_view.dart';
+import '../orders/order_history_view.dart';
+import '../placeholders/placeholders.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -109,22 +111,72 @@ class ProfileView extends StatelessWidget {
             const SizedBox(height: 48),
             // Settings Groups
             _buildSectionHeader('ACCOUNT'),
-            _buildMenuItem(Icons.shopping_bag_outlined, 'My Orders', 'Track and manage your purchases'),
-            _buildMenuItem(Icons.favorite_border, 'My Wishlist', 'Items you have saved for later'),
-            _buildMenuItem(Icons.location_on_outlined, 'Shipping Address', 'Manage your delivery locations'),
-            _buildMenuItem(Icons.credit_card_outlined, 'Payment Methods', 'Manage your cards and wallets'),
+            _buildMenuItem(
+              Icons.shopping_bag_outlined, 
+              'My Orders', 
+              'Track and manage your purchases',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const OrderHistoryView())),
+            ),
+            _buildMenuItem(
+              Icons.favorite_border, 
+              'My Wishlist', 
+              'Items you have saved for later',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const WishlistView())),
+            ),
+            _buildMenuItem(
+              Icons.location_on_outlined, 
+              'Shipping Address', 
+              'Manage your delivery locations',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddressView())),
+            ),
+            _buildMenuItem(
+              Icons.credit_card_outlined, 
+              'Payment Methods', 
+              'Manage your cards and wallets',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const PaymentMethodsView())),
+            ),
             
             const SizedBox(height: 24),
             _buildSectionHeader('PREFERENCES'),
-            _buildMenuItem(Icons.notifications_none, 'Notifications', 'App updates and sale alerts'),
-            _buildMenuItem(Icons.language_outlined, 'Language', 'Change your preferred language'),
-            _buildMenuItem(Icons.dark_mode_outlined, 'Display', 'Switch between light and dark mode'),
+            _buildMenuItem(
+              Icons.notifications_none, 
+              'Notifications', 
+              'App updates and sale alerts',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationsView())),
+            ),
+            _buildMenuItem(
+              Icons.language_outlined, 
+              'Language', 
+              'Change your preferred language',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LanguageView())),
+            ),
+            _buildMenuItem(
+              Icons.dark_mode_outlined, 
+              'Display', 
+              'Switch between light and dark mode',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const DisplaySettingsView())),
+            ),
             
             const SizedBox(height: 24),
             _buildSectionHeader('SUPPORT'),
-            _buildMenuItem(Icons.help_outline, 'Help & FAQ', 'Find answers to common questions'),
-            _buildMenuItem(Icons.contact_support_outlined, 'Contact Us', 'Our team is here to help'),
-            _buildMenuItem(Icons.info_outline, 'About StyleHub', 'Our story and sustainability efforts'),
+            _buildMenuItem(
+              Icons.help_outline, 
+              'Help & FAQ', 
+              'Find answers to common questions',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const HelpFAQView())),
+            ),
+            _buildMenuItem(
+              Icons.contact_support_outlined, 
+              'Contact Us', 
+              'Our team is here to help',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ContactUsView())),
+            ),
+            _buildMenuItem(
+              Icons.info_outline, 
+              'About StyleHub', 
+              'Our story and sustainability efforts',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AboutView())),
+            ),
             
             const SizedBox(height: 48),
             Padding(
@@ -204,50 +256,53 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String title, String subtitle) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.03),
-                  blurRadius: 5,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Icon(icon, size: 20, color: Colors.black),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.inter(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+  Widget _buildMenuItem(IconData icon, String title, String subtitle, {VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.03),
+                    blurRadius: 5,
+                    offset: const Offset(0, 2),
                   ),
-                ),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.inter(
-                    color: Colors.grey[500],
-                    fontSize: 11,
-                  ),
-                ),
-              ],
+                ],
+              ),
+              child: Icon(icon, size: 20, color: Colors.black),
             ),
-          ),
-          Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey[300]),
-        ],
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.inter(
+                      color: Colors.grey[500],
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey[300]),
+          ],
+        ),
       ),
     );
   }
