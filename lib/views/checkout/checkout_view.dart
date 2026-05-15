@@ -200,21 +200,21 @@ class _CheckoutViewState extends State<CheckoutView> {
                         method: PaymentMethod.visa,
                         title: 'Visa Classic',
                         subtitle: '**** **** **** 4242',
-                        icon: FontAwesomeIcons.ccVisa,
+                        iconWidget: const FaIcon(FontAwesomeIcons.ccVisa, size: 20, color: Colors.black),
                       ),
                       const SizedBox(height: 16),
                       _buildPaymentOption(
                         method: PaymentMethod.creditCard,
                         title: 'Other Credit or Debit Card',
                         subtitle: 'Mastercard, Amex, etc.',
-                        icon: Icons.credit_card,
+                        iconWidget: const Icon(Icons.credit_card, size: 20, color: Colors.black),
                       ),
                       const SizedBox(height: 16),
                       _buildPaymentOption(
                         method: PaymentMethod.cashOnDelivery,
                         title: 'Cash on Delivery',
                         subtitle: 'Pay upon receiving items',
-                        icon: Icons.account_balance_wallet_outlined,
+                        iconWidget: const Icon(Icons.account_balance_wallet_outlined, size: 20, color: Colors.black),
                       ),
                       const SizedBox(height: 40),
                     ],
@@ -354,7 +354,7 @@ class _CheckoutViewState extends State<CheckoutView> {
     required PaymentMethod method,
     required String title,
     required String subtitle,
-    required IconData icon,
+    required Widget iconWidget,
   }) {
     bool isSelected = _viewModel.selectedPaymentMethod == method;
     return GestureDetector(
@@ -377,7 +377,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                 color: Colors.grey[100],
                 shape: BoxShape.circle,
               ),
-              child: Icon(icon, size: 20, color: Colors.black),
+              child: iconWidget,
             ),
             const SizedBox(width: 16),
             Expanded(
